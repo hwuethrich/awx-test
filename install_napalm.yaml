@@ -1,0 +1,7 @@
+- name: Install napalm
+  hosts: local
+  gather_facts: no
+
+  tasks:
+    - pip:
+        name: napalm

@@ -1,11 +1,3 @@
-- name: Install napalm
-  hosts: local
-  gather_facts: no
-
-  tasks:
-    - pip:
-        name: napalm
-
 - name: Test Inventory
   hosts: cisco
   connection: local

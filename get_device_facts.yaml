@@ -1,0 +1,42 @@
+- name: Test Inventory
+  hosts: cisco
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Display all variables/facts known for a host
+      debug:
+        var: hostvars[inventory_hostname]
+        verbosity: 4
+
+    - name: Get facts from device
+      napalm_get_facts:
+        hostname: "{{ ansible_host }}"
+        username: neops
+        dev_os: ios
+        password: cisco
+        filter:
+          - facts
+          - interfaces
+          - lldp_neighbors_detail
+          - mac_address_table
+          - config
+      register: result
+
+    - name: print results
+      debug: msg="{{ result }}"
+
+    - name: Get route to 8.8.8.8
+      napalm_get_facts:
+        hostname: "{{ ansible_host }}"
+        username: neops
+        dev_os: ios
+        password: cisco
+        filter: ["route_to"]
+        args:
+          route_to:
+            destination: 8.8.8.8
+      register: result
+
+    - name: print results
+      debug: msg="{{ result }}"

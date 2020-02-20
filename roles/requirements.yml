@@ -1,0 +1,2 @@
+- src: ansible-network.cisco_ios
+  version: v2.7.1

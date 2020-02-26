@@ -7,5 +7,6 @@
   tasks:
     - name: Enable Cisco Discovery Protocol
       ios_config:
+        diff_against: running
         lines:
           - cdp run

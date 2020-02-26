@@ -1,11 +1,12 @@
 ---
-- name: Enable CDP
+- name: Disable CDP
   hosts: ios
   connection: network_cli
   gather_facts: no
 
   tasks:
-    - name: Enable Cisco Discovery Protocol
+    - name: Disable Cisco Discovery Protocol
       ios_config:
+        diff_against: running
         lines:
           - no cdp run

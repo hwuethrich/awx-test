@@ -1,6 +1,6 @@
 ---
 - name: Get VTP Facts
-  hosts: ios
+  hosts: switches
   gather_facts: no
   connection: network_cli
   roles:

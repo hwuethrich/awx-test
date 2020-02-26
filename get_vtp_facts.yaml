@@ -22,4 +22,4 @@
         content: "{{ output.stdout.0 }}"
 
     - name: Display the data
-      debug: var=vtp_status_facts
+      debug: var=vtp_status

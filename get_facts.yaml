@@ -1,4 +1,6 @@
-- name: Test Inventory
+- name: Get Device Facts (Cisco IOS)
+  connection: network_cli
+  gather_facts: false
   hosts: ios
   roles:
     - name: ansible-network.cisco_ios
@@ -10,11 +12,12 @@
         - vrf
         - cdp
         - lldp
+
   tasks:
     - name: Display all variables/facts known for a host
       debug:
         var: hostvars[inventory_hostname]
-    - name: Store facts
-      set_fact:
-        hello: world
-        cacheable: yes
+    # - name: Store facts
+    #   set_fact:
+    #     hello: world
+    #     cacheable: yes

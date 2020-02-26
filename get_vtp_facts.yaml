@@ -1,0 +1,25 @@
+---
+- name: Get VTP Facts
+  hosts: ios
+  gather_facts: no
+  connection: network_cli
+  roles:
+    - ansible-network.network-engine
+
+  tasks:
+    - name: Get VTP status from device
+      ios_command:
+        commands:
+          - show vtp status
+      register: output
+
+    - name: Display VTP status
+      debug: var=output.stdout.0
+
+    - name: Parse VTP status
+      command_parser:
+        file: "parsers/ios/show_vtp_status.yaml"
+        content: "{{ output.stdout.0 }}"
+
+    - name: Display the data
+      debug: var=vtp_status_facts

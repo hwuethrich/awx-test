@@ -1,0 +1,18 @@
+- name: Get Napalm Facts
+  hosts: ios
+  connection: local
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+  tasks:
+    - name: get facts from device
+      napalm_get_facts:
+        hostname: "{{ ansible_host }}"
+        username: "{{ ansible_user }}"
+        dev_os: "{{ ansible_network_os }}"
+        password: "{{ ansible_ssh_pass }}"
+        filter: 'facts,interfaces,interfaces_ip,arp_table,mac_address_table'
+      register: result
+
+    - name: print results
+      debug: msg="{{ result }}"

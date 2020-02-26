@@ -1,6 +1,3 @@
 [submodule "library/napalm-ansible"]
 	path = library/napalm-ansible
-	url = https://github.com/napalm-automation/napalm-ansible.git
-[submodule "library/napalm"]
-	path = library/napalm
 	url = https://github.com/napalm-automation/napalm.git

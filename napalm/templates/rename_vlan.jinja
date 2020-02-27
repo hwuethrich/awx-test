@@ -1,0 +1,16 @@
+!
+! Rename VLAN '{{ rename_vlan.old }}' -> '{{ rename_vlan.new }}'
+!
+{% for vlan in host.facts.vlans %}
+{% if vlan.name | regex_search('^(' ~ input.old ~ ')[^\w]+.*$|^(' ~ input.old ~ ')$', ignorecase=True) %}
+vlan {{ vlan.vlan_id }}
+  ! old: {{ vlan.name }}
+  name {{ vlan.name | regex_replace('^(' ~ input.old ~ ')$', input.new | upper, ignorecase=True) | regex_replace('^' ~ input.old ~ '([^\w]+.*)$', input.new | upper ~ '\\1', ignorecase=True)}}
+
+{% else %}
+! IGNORED VLAN
+! vlan {{ vlan.vlan_id }}
+!   name {{ vlan.name }}
+{% endif %}
+{% endfor %}
+{% endif %}

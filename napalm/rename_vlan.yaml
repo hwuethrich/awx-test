@@ -1,0 +1,17 @@
+- name: Rename VLAN
+  hosts: ios
+  connection: local
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+  tasks:
+    - name: Install Config
+      napalm_install_config:
+        hostname: "{{ ansible_host }}"
+        username: "{{ ansible_user }}"
+        dev_os: "{{ ansible_network_os }}"
+        password: "{{ ansible_ssh_pass }}"
+
+        config: "{{ lookup('template', 'templates/rename_vlan.jinja') }}"
+        commit_changes: false
+        get_diffs: true

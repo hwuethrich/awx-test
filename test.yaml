@@ -1,0 +1,27 @@
+---
+- name: Get Facts
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+
+    - set_fact:
+        cisco_ios: "{{ {'a': 1} }}"
+        cisco_ios_cust: "{{ {'a': 1} }}"
+        cacheable: yes
+
+    - name: Display all variables/facts known for a host
+      debug:
+        var: hostvars[inventory_hostname]
+
+    - set_fact:
+        cisco_ios: "{{ ansible_facts.cisco_ios | combine({ 'cust': cisco_ios_cust }) }}"
+        cisco_ios_cust:
+        cacheable: yes
+
+    - name: Display all variables/facts known for a host
+      debug:
+        var: hostvars[inventory_hostname]
+
+    - debug:
+        msg: "{{ ansible_facts }}"

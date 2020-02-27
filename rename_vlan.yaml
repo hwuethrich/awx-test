@@ -1,30 +1,23 @@
-!
-! Rename VLAN '{{ input.old }}' -> '{{ input.new }}'
-!
-{% set dovlan=false %}
-!
-{% if host.facts.get('vtp') and host.facts.vtp.get('mode') and (host.facts.vtp.mode == 'Primary' or host.facts.vtp.mode == 'Transparent') %}
-{% set dovlan = true %}
-!
-! VLAN Config, Device is in VTP Transparent or Primary mode
-!
-{% else %}
-!
-! No VLAN Config, Device is in VTP Client Mode or has no VTP at all
-!
-{% endif %}
-!
-{% if dovlan is sameas true %}
-{% for vlan in host.facts.vlans %}
-{% if vlan.name | regex_search('^(' ~ input.old ~ ')[^\w]+.*$|^(' ~ input.old ~ ')$', ignorecase=True) %}
-vlan {{ vlan.vlan_id }}
-  ! old: {{ vlan.name }}
-  name {{ vlan.name | regex_replace('^(' ~ input.old ~ ')$', input.new | upper, ignorecase=True) | regex_replace('^' ~ input.old ~ '([^\w]+.*)$', input.new | upper ~ '\\1', ignorecase=True)}}
+- name: Rename VLAN
+  connection: network_cli
+  gather_facts: false
+  hosts: ios
+  roles:
+    - name: ansible-network.cisco_ios
+      function: get_facts
+      subset:
+        - system
+        - interfaces
+        - bgp
+        - vrf
+        - cdp
+        - lldp
 
-{% else %}
-! IGNORED VLAN
-! vlan {{ vlan.vlan_id }}
-!   name {{ vlan.name }}
-{% endif %}
-{% endfor %}
-{% endif %}
+  tasks:
+    - name: Display all variables/facts known for a host
+      debug:
+        var: hostvars[inventory_hostname]
+    # - name: Store facts
+    #   set_fact:
+    #     hello: world
+    #     cacheable: yes

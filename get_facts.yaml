@@ -1,0 +1,33 @@
+---
+- name: Get Facts
+  hosts: ios
+  gather_facts: no
+  connection: network_cli
+  roles:
+    - name: ansible-network.network-engine
+
+  tasks:
+    - name: Collect default facts from devices
+      import_role:
+        name: ansible-network.cisco_ios
+        tasks_from: get_facts
+      vars:
+        subset:
+          - system
+          - interfaces
+          - routing
+          - lldp
+          - cdp
+
+    - name: Collect custom facts from devices
+      import_role:
+        name: cisco_ios
+        tasks_from: get_facts
+      vars:
+        subset:
+          - vlans
+          - vtp
+
+    - name: Display all variables/facts known for a host
+      debug:
+        var: ansible_facts

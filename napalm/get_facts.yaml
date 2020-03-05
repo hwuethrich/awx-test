@@ -11,7 +11,7 @@
         username: "{{ ansible_user }}"
         dev_os: "{{ ansible_network_os }}"
         password: "{{ ansible_ssh_pass }}"
-        filter: 'facts,interfaces,interfaces_ip,arp_table,mac_address_table'
+        filter: "facts,interfaces,interfaces_ip,arp_table,mac_address_table"
       register: result
 
     - name: print results

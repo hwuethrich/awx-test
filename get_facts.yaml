@@ -27,6 +27,7 @@
         subset:
           - vlans
           - vtp
+      when: "'routers' not in group_names"
 
     - name: Display all variables/facts known for a host
       debug:

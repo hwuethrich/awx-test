@@ -5,4 +5,3 @@
     parser: "{{ role_path }}/parser_templates/show_vlan.textfsm"
     engine: textfsm_parser
     name: cisco_ios_vlans
-  when: "'routers' not in group_names"

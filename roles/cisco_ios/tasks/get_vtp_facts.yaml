@@ -1,0 +1,5 @@
+---
+- name: parse vtp status
+  cli:
+    command: show vtp status
+    parser: "{{ role_path }}/parser_templates/show_vtp_status.yaml"

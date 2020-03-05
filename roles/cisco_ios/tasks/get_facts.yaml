@@ -1,0 +1,6 @@
+---
+- include_tasks: get_vlan_facts.yaml
+  when: "['vlans', 'default', 'all'] | intersect(ios_get_facts_subset)"
+
+- include_tasks: get_vtp_facts.yaml
+  when: "['vtp', 'default', 'all'] | intersect(ios_get_facts_subset)"

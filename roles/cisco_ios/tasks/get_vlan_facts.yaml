@@ -1,0 +1,7 @@
+---
+- name: parse vlans
+  cli:
+    command: show vlan
+    parser: "{{ role_path }}/parser_templates/show_vlan.textfsm"
+    engine: textfsm_parser
+    name: cisco_ios_vlans

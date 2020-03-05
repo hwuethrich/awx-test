@@ -1,0 +1,143 @@
+Value Required id (\d+)
+Value name (\S+)
+Value status (\S+)
+Value List interfaces ([\w\./]+)
+
+Start
+  ^\s*$$
+  ^\w+\s+[NnAaMmEe]{4}.*$$ -> VLANS
+  # Capture time-stamp if vty line has command time-stamping turned on
+  ^Load\s+for\s+
+  ^Time\s+source\s+is
+
+VLANS
+  ^\d+ -> Continue.Record
+  ^${id}\s+${name}\s+${status}\s*$$
+  ^${id}\s+${name}\s+${status}\s+${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){3}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){4}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){5}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){6}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){7}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){8}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){9}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){10}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){11}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){12}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){13}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){14}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){15}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){16}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){17}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){18}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){19}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){20}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){21}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){22}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){23}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){24}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){25}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){26}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){27}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){28}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){29}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){30}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){31}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){32}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){33}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){34}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){35}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){36}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){37}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){38}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){39}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){40}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){41}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){42}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){43}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){44}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){45}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){46}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){47}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){48}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){49}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){50}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){51}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){52}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){53}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){54}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){55}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){56}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){57}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){58}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){59}${interfaces},* -> Continue
+  ^\d+\s+(?:\S+\s+){60}${interfaces},* -> Continue
+  ^\s+${interfaces},* -> Continue
+  ^\s+\S+\s+${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){2}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){3}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){4}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){5}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){6}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){7}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){8}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){9}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){10}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){11}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){12}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){13}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){14}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){15}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){16}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){17}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){18}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){19}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){20}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){21}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){22}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){23}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){24}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){25}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){26}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){27}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){28}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){29}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){30}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){31}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){32}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){33}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){34}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){35}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){36}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){37}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){38}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){39}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){40}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){41}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){42}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){43}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){44}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){45}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){46}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){47}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){48}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){49}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){50}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){51}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){52}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){53}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){54}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){55}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){56}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){57}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){58}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){59}${interfaces},* -> Continue
+  ^\s+(?:\S+\s+){60}${interfaces},* -> Continue
+  ^\d+
+  ^\s+
+  ^-+
+  ^\S+\s+[TtYyPpEe]{4} -> Done
+  ^.+ -> Error
+
+Done
+  ^.*
